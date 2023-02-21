@@ -4,7 +4,7 @@ import React from 'react'
 const Blog = async () => {
   
   return (
-    <div>g</div>
+    <h1>Blog homepage</h1>
   )
 }
 
