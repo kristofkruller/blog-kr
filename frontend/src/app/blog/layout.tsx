@@ -1,24 +1,27 @@
-import Seo from '@root/components/seo/seo'
-import { fetchAPI } from 'lib/api'
-import Head from 'next/head'
-import React, { PropsWithChildren } from 'react'
+import React from 'react'
 
-const fetchHome = async () => {
-  const response = await fetchAPI("/homepage", {
-    populate:"*"
-  })
-  return response;
-}
-const layout = async ({ children }: PropsWithChildren) => {
-  const homeSeo = await fetchHome();
+import { fetchAPI } from "lib/api";
+import Seo from "@root/components/seo/seo";
 
-  console.log(homeSeo.data.attributes);
+// const fetchHome = async () => {
+//   const response = await fetchAPI("/homepage", {
+//     populate:"*"
+//   })
+//   return response;
+// }
+
+const layout = async ({ children }:{children:React.ReactNode}) => {
+  // const homeSeo = await fetchHome();
+
+  // console.log(homeSeo.data.attributes);
 
   return (
     <>
-      <Head>
-        <Seo meta={homeSeo}></Seo>
-      </Head>
+      {/* <Seo 
+        meta={homeSeo}
+        overwrite={true}
+        key={"home"}
+      /> */}
       { children }
     </>
   )

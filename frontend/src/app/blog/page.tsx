@@ -1,11 +1,9 @@
-import { fetchAPI } from 'lib/api'
-import React from 'react'
 
-const Blog = async () => {
-  
+export default async function blogHome() {
+
   return (
-    <h1>Blog homepage</h1>
+    <>
+      <h1>This is the blog-home page</h1>
+    </>
   )
 }
-
-export default Blog

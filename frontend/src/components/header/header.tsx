@@ -12,11 +12,11 @@ const Header = () => {
   return (
     <HeaderWrap>
       <HeaderSect open={open}>
-        <HeaderLi href="/blog">services</HeaderLi>
-        <HeaderLi href="/blog">portfolio</HeaderLi>
-        <HeaderLi href="/blog">contact</HeaderLi>
+        <HeaderLi href="#services">services</HeaderLi>
+        <HeaderLi href="#portfolio">portfolio</HeaderLi>
+        <HeaderLi href="#contact">contact</HeaderLi>
         <HeaderLi href="/blog">blog</HeaderLi>
-        <HeaderLi href="/blog">about</HeaderLi>
+        <HeaderLi href="#about">about</HeaderLi>
       </HeaderSect>
       <ColorSwitcher open={open} onClick={toggleOpenState} />
     </HeaderWrap>

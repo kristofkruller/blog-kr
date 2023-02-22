@@ -2,8 +2,7 @@
 export default function Home() {
   return (
     <main>
-      <h1>Hello</h1>
-      <h2>Hi</h2>
+      <h1>Portfolio and blog</h1>
     </main>
   )
 }

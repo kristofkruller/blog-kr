@@ -6,7 +6,7 @@ import StyledComponentsRegistry from "lib/registry";
 import { GlobalContextProvider, DefaultContextProps } from "@root/context/GlobalContext";
 import { OpenProvider } from "@root/context/OpenContext";
 
-export default function RootLayout({ children }: DefaultContextProps) {
+export default function RootLayout({ children }:{children: React.ReactNode}) {
 
   return (
     <html lang="en">
@@ -14,7 +14,7 @@ export default function RootLayout({ children }: DefaultContextProps) {
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
-      <head />
+      {/* <head /> */}
       <body>
       <GlobalContextProvider>
         <OpenProvider>
