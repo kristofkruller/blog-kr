@@ -1,9 +1,8 @@
+import { ArticleHomeWrap } from "@root/components/articles/articles.styles";
 
 export default async function blogHome() {
 
   return (
-    <>
-      <h1>This is the blog-home page</h1>
-    </>
+    <>page</>
   )
 }

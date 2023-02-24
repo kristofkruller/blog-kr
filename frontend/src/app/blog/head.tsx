@@ -1,6 +1,6 @@
 
 import { fetchAPI } from "lib/api";
-import Seo from "@root/components/seo/seo";
+import Seo from "@root/components/seo";
 
 const fetchHome = async () => {
   const response = await fetchAPI("/homepage", {

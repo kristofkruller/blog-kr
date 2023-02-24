@@ -1,27 +1,22 @@
-import React from 'react'
+import React from 'react';
+import Articles from '@root/components/articles/articles';
+import { fetchAPI } from 'lib/api';
 
-import { fetchAPI } from "lib/api";
-import Seo from "@root/components/seo/seo";
+const fetchAllArticles = async () => {
+  const response = await fetchAPI("/articles", {
+    populate: "*"
+  });
 
-// const fetchHome = async () => {
-//   const response = await fetchAPI("/homepage", {
-//     populate:"*"
-//   })
-//   return response;
-// }
+  return response;
+}
 
 const layout = async ({ children }:{children:React.ReactNode}) => {
-  // const homeSeo = await fetchHome();
 
-  // console.log(homeSeo.data.attributes);
+  const { data } = await fetchAllArticles();
 
   return (
     <>
-      {/* <Seo 
-        meta={homeSeo}
-        overwrite={true}
-        key={"home"}
-      /> */}
+      <Articles collection={ data }/>
       { children }
     </>
   )

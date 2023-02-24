@@ -3,7 +3,7 @@ import Header from "@root/components/header/header";
 import GlobalStyles from "@root/styles/globalStyles";
 import StyledComponentsRegistry from "lib/registry";
 
-import { GlobalContextProvider, DefaultContextProps } from "@root/context/GlobalContext";
+import { GlobalContextProvider } from "@root/context/GlobalContext";
 import { OpenProvider } from "@root/context/OpenContext";
 
 export default function RootLayout({ children }:{children: React.ReactNode}) {
