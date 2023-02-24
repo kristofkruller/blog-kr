@@ -15,6 +15,7 @@ export const HeaderWrap = styled.header`
   left: 0;
   display: flex;
   justify-content: center;
+
   & * {  
     transition: var(--transition-basic);
   }

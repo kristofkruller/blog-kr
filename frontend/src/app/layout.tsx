@@ -5,6 +5,7 @@ import StyledComponentsRegistry from "lib/registry";
 
 import { GlobalContextProvider } from "@root/context/GlobalContext";
 import { OpenProvider } from "@root/context/OpenContext";
+import { Suspense } from "react";
 
 export default function RootLayout({ children }:{children: React.ReactNode}) {
 
@@ -19,11 +20,11 @@ export default function RootLayout({ children }:{children: React.ReactNode}) {
       <GlobalContextProvider>
         <OpenProvider>
           <StyledComponentsRegistry>
-
-            <GlobalStyles />
-            <Header />
-            {children}
-
+            <main>
+              <GlobalStyles />
+              <Header />
+              {children}
+            </main>
           </StyledComponentsRegistry>
         </OpenProvider>
       </GlobalContextProvider>
