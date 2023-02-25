@@ -1,18 +1,19 @@
 
-import { fetchAPI } from "lib/api";
-import Seo from "@root/components/seo";
+import { fetchAPI } from "lib/strapi/api";
+import HeadMeta from "@root/components/head/HeadMeta";
 
 const fetchHome = async () => {
   const response = await fetchAPI("/homepage", {
-    populate:"*"
+    populate: "*"
   })
   return response;
 }
 
 export default async function Head() {
+
   const homeSeo = await fetchHome();
 
   return (
-      <Seo meta={homeSeo} />
+    <HeadMeta dynamic={homeSeo} />
   )
 }

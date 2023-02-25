@@ -17,7 +17,19 @@ export function getStrapiURL(path = "") {
  * @param {Object} urlParamsObject URL params object, will be stringified
  * @param {Object} options Options passed to fetch
  * @returns Parsed API call response
- */
+ * example:
+ * const query = qs.stringify(
+  {
+    populate: '*',
+  },
+  {
+    encodeValuesOnly: true, // prettify URL
+  }
+  );
+
+  await request(`/api/articles?${query}`);
+  see https://docs.strapi.io/dev-docs/api/rest/populate-select
+  */
 export async function fetchAPI(
   path: string, 
   urlParamsObject = {}, 

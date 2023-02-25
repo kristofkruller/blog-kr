@@ -2,9 +2,7 @@
 
 import React, { SetStateAction, useState, createContext } from 'react'
 
-type OpenProviderProps = {
-  children: React.ReactNode;
-}
+import { DefaultProps } from 'blog';
 
 export const OpenContext = createContext<{
     open: boolean,
@@ -16,7 +14,7 @@ export const OpenContext = createContext<{
     toggleOpenState: () => {}
 })
 
-export const OpenProvider = ({ children }: OpenProviderProps) => {
+export const OpenProvider = ({ children }: DefaultProps) => {
   const [open, isOpen] = useState(false);
 
   const toggleOpenState = () => isOpen(!open);

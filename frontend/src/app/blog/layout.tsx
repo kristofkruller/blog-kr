@@ -1,6 +1,6 @@
 import React from 'react';
-import Articles from '@root/components/articles/articles';
-import { fetchAPI } from 'lib/api';
+import Articles from '@root/components/articles/Articles';
+import { fetchAPI } from 'lib/strapi/api';
 
 const fetchAllArticles = async () => {
   const response = await fetchAPI("/articles", {

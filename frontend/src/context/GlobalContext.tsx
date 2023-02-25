@@ -1,10 +1,9 @@
 "use client";
 
-import { createContext, SetStateAction, useState } from "react";
+import React, { createContext, SetStateAction, useState } from "react";
 
-export interface DefaultContextProps {
-  children: React.ReactNode
-}
+import { DefaultProps } from "blog";
+
 interface StrapiSingleGlobal {
 // ...
 }
@@ -21,7 +20,7 @@ export const GlobalContext = createContext<{
 
 //provider
 
-export const GlobalContextProvider = ({ children }: DefaultContextProps) => {
+export const GlobalContextProvider = ({ children }: DefaultProps) => {
   const [strapiGlobal, setStrapiGlobal] = useState(null)
 
   const value = {

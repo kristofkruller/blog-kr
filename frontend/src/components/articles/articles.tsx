@@ -1,9 +1,9 @@
-"use client"
+import React, { FC } from 'react'
+import OtherFields from './utils/OtherFields'
+
+import styles from './articles.module.scss'
 
 import { Article } from 'blog'
-import React, { FC } from 'react'
-import Moment from 'react-moment'
-import { ArticleHomeWrap, Content, ContentWrap, Title } from './articles.styles'
 
 interface Collection {
   collection: Article[]
@@ -12,21 +12,16 @@ interface Collection {
 const Articles: FC<Collection> = ( { collection } ) => {
 
   return (
-    <ArticleHomeWrap>
+    <section className={styles.articleSection}>
       <h1>All blog posts</h1>
       {collection.map(({ id, attributes }: any) => (
-        <ContentWrap key={ id }>
-          <Title>{ attributes.title }</Title>
-          <Content>
-            { attributes.description } 
-            <br/> 
-            <Moment format="MMM Do /YYYY">
-              { attributes.publishedAt }
-            </Moment>
-          </Content>
-        </ContentWrap>
+        <div className={styles.contentWrap} key={ id }>
+          <h2 className={styles.title}>{ attributes.title }</h2>
+          <p className={styles.content}>{ attributes.description }</p>
+          <OtherFields time={ attributes.publishedAt } />
+        </div>
       ))}
-    </ArticleHomeWrap>
+    </section>
   )
 }
 

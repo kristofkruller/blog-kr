@@ -1,16 +1,18 @@
-import Header from "@root/components/header/header";
-
-import GlobalStyles from "@root/styles/globalStyles";
-import StyledComponentsRegistry from "lib/registry";
+import Header from "@root/components/header/Header";
 
 import { GlobalContextProvider } from "@root/context/GlobalContext";
 import { OpenProvider } from "@root/context/OpenContext";
-import { Suspense } from "react";
+import '../styles/globals.scss'
+
+import { Sora, Raleway } from "@next/font/google"
+
+const sora = Sora({ subsets: ['latin'] });
+const raleway = Raleway({ subsets: ['latin'] });
 
 export default function RootLayout({ children }:{children: React.ReactNode}) {
 
   return (
-    <html lang="en">
+    <html lang="en" className={`${raleway.className} ${sora.className}`}>
       {/*
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
@@ -19,13 +21,10 @@ export default function RootLayout({ children }:{children: React.ReactNode}) {
       <body>
       <GlobalContextProvider>
         <OpenProvider>
-          <StyledComponentsRegistry>
-            <main>
-              <GlobalStyles />
-              <Header />
-              {children}
-            </main>
-          </StyledComponentsRegistry>
+          <main>
+            <Header />
+            {children}
+          </main>
         </OpenProvider>
       </GlobalContextProvider>
       </body>

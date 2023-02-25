@@ -1,25 +1,20 @@
-"use client"
-
 import React from 'react';
-import { HeaderLi, HeaderSect, HeaderWrap, ColorSwitcher } from './header.styles';
+import Link from 'next/link';
 
-import { useContext } from "react";
-import { OpenContext } from "../../context/OpenContext";
+import styles from './header.module.scss'
 
 const Header = () => {
-  const { open, toggleOpenState } = useContext(OpenContext);
 
   return (
-    <HeaderWrap>
-      <HeaderSect open={open}>
-        <HeaderLi href="#services">services</HeaderLi>
-        <HeaderLi href="#portfolio">portfolio</HeaderLi>
-        <HeaderLi href="#contact">contact</HeaderLi>
-        <HeaderLi href="/blog">blog</HeaderLi>
-        <HeaderLi href="#about">about</HeaderLi>
-      </HeaderSect>
-      <ColorSwitcher open={open} onClick={toggleOpenState} />
-    </HeaderWrap>
+    <header className={styles.navBar}>
+      <section className={styles.navWrap}>
+        <Link className={styles.navLink} href="#services">services</Link>
+        <Link className={styles.navLink} href="#portfolio">portfolio</Link>
+        <Link className={styles.navLink} href="#contact">contact</Link>
+        <Link className={styles.navLink} href="/blog">blog</Link>
+        <Link className={styles.navLink} href="#about">about</Link>
+      </section>
+    </header>
   )
 }
 

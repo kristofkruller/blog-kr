@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_sections_favicons",
+  "info": {
+    "displayName": "favicon"
+  },
+  "options": {},
+  "attributes": {
+    "favicon": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

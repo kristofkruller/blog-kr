@@ -1,6 +1,4 @@
-import styled from "styled-components";
-
-export const ArticleHomeWrap = styled.section`
+.articleSection {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -8,22 +6,25 @@ export const ArticleHomeWrap = styled.section`
   align-items: center;
   padding-top: 100px;
   gap: 20px;
+  
   & * {
     display: flex;
   }
-`
-export const ContentWrap = styled.div`
+
+}
+
+.contentWrap {
   flex-direction: column;
   align-items: center;
   max-width: 1360px;
-`
-export const Title = styled.h2`
+}
+
+.title {
   width: 100%;
   justify-content: center;
-  opacity: .8;
-`
+}
 
-export const Content = styled.p`
+.content {
   flex-direction: column;
   align-items: center;
   text-align: center;
@@ -33,4 +34,4 @@ export const Content = styled.p`
   & time {
     opacity: .5;
   }
-`
+}
