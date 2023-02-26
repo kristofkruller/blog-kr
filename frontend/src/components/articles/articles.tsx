@@ -4,6 +4,7 @@ import OtherFields from './utils/OtherFields'
 import styles from './articles.module.scss'
 
 import { Article } from 'blog'
+import SearchBox from './utils/SearchBox'
 
 interface Collection {
   collection: Article[]
@@ -21,6 +22,7 @@ const Articles: FC<Collection> = ( { collection } ) => {
           <OtherFields time={ attributes.publishedAt } />
         </div>
       ))}
+      <SearchBox posts={collection} />
     </section>
   )
 }

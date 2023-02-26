@@ -12,12 +12,29 @@ export interface Article {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
-    category: any;
+    category: Category;
     image: Img;
-    author: any;
+    author: Author;
   }
 }
-
+export interface Author {
+  data: {
+    id: number;
+    attributes: {
+      email: string;
+      name: string;
+    }
+  }
+}
+export interface Category {
+  data: {
+    id: number;
+    attributes: {
+      name: string;
+      slug: string;
+    }
+  }
+}
 export interface DefaultMeta {
   data: {
     id: number,
