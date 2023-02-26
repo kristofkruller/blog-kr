@@ -24,16 +24,16 @@ const SearchBox: FC<DataProp> = ( { posts } ) => {
   return (
     <>
       <input 
+        key="search"
         type="search"
         placeholder='Search in posts'
         onChange={handleChange}
       />
-    <div>{
-      filteredVal.map(val => 
-        <p key={val.id}>{val.attributes.title}</p>
-        )
-      }</div>    </>
-
+    {input.length > 0 ?
+      <div key="filteredVal">{ filteredVal.map(val => <p key={val.id}>{val.attributes.title}</p>) }</div>  
+    : <p key="hint">you can search by category, title, description or author</p> 
+    }
+    </>
   )
 }
 

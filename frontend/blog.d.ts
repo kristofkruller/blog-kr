@@ -12,14 +12,14 @@ export interface Article {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
-    category: Category;
+    categories: Category;
     image: Img;
     author: Author;
   }
 }
 export interface Author {
   data: {
-    id: number;
+    id: number,
     attributes: {
       email: string;
       name: string;
@@ -27,13 +27,13 @@ export interface Author {
   }
 }
 export interface Category {
-  data: {
-    id: number;
+  data: [{
+    id: number,
     attributes: {
       name: string;
       slug: string;
     }
-  }
+  }]
 }
 export interface DefaultMeta {
   data: {
@@ -62,6 +62,7 @@ export interface Img {
       height: number,
       hash: string,
       url: string,
+      alternativeText: string,
     }
   }
 }

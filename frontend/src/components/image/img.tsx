@@ -1,0 +1,25 @@
+import { getStrapiMedia } from "../../../lib/strapi/media";
+import Image from "next/image";
+import { Img } from "blog";
+import { FC } from "react";
+
+interface ImgProps {
+  image: Img
+}
+
+const Img: FC<ImgProps> = ({ image }) => {
+  const { alternativeText, width, height } = image.data.attributes;
+
+  return (
+    <Image
+      width={width}
+      height={height}
+      src={getStrapiMedia(image)}
+      alt={alternativeText || ""}
+      // placeholder="blur"
+      // blurDataURL=""
+    />
+  );
+};
+
+export default Img;

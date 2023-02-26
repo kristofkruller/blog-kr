@@ -1,6 +1,5 @@
-export default async function blogHome() {
-
+export default function blogHome() {
   return (
-    <>page</>
+    <h1>All blog posts</h1>
   )
 }

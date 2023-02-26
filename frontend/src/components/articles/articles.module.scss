@@ -4,19 +4,36 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 100px;
   gap: 20px;
   
   & * {
     display: flex;
+    transition: var(--transition-basic);
   }
-
 }
 
 .contentWrap {
   flex-direction: column;
   align-items: center;
   max-width: 1360px;
+  gap: 20px;
+  font-family: var(--sora);
+
+  & > span {
+    gap: 10px;
+
+    & *:hover {
+      color: var(--lightpink);
+      transition: var(--transition-basic);
+      cursor: pointer;
+    }
+  }
+
+  & span *, time {
+    font-family: var(--rale);
+    font-weight: bold;
+    color: var(--grau);
+  }
 }
 
 .title {
@@ -30,8 +47,4 @@
   text-align: center;
   line-height: 2;
   font-weight: 600;
-
-  & time {
-    opacity: .5;
-  }
 }

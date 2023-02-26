@@ -13,13 +13,16 @@
   */
 
 :root {
-  --primary-color: #8347AE;
-  --secondary-color: #FC89AC;
+  --krubo: #8347AE;
+  --pink: #FC89AC;
+  --lightpink: #fc89ac8f;
   --light: #E6E6E6;
   --dark: #160D1C;
+  --grau: #160d1c8d;
 
   --transition-basic: all 245ms ease-in-out;
 
+  --rale:'__Raleway_6a7471', '__Raleway_Fallback_6a7471';
   --sora:'__Sora_accfd5', '__Sora_Fallback_accfd5';
 }
 
@@ -59,22 +62,28 @@ a {
 }
 
 h1 {
-  font-weight: 500;
-  letter-spacing: .3em;
-  text-transform: uppercase;
-  font-size: 5em;
-  color: var(--dark);
-  min-height: 160px;
   display: flex;
   align-items: center;
+  justify-content: center;
+
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 5em;
+  font-weight: 500;
+  letter-spacing: .3em;
+  color: var(--dark);
+
+  min-height: 160px;
+  padding: 100px 0 40px;
 }
 
 h2 {
+  text-transform: uppercase;
+  text-align: center;
   font-family: var(--sora);
-  font-weight: 900;
   font-size: 40px;
+  font-weight: 900;
   line-height: 49px;
   letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--primary-color);
+  color: var(--krubo);
 }

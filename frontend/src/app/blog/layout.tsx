@@ -16,8 +16,8 @@ const layout = async ({ children }:{children:React.ReactNode}) => {
 
   return (
     <>
-      <Articles collection={ data }/>
       { children }
+      <Articles collection={ data }/>
     </>
   )
 }

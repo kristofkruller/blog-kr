@@ -1,10 +1,11 @@
-import React, { FC } from 'react'
+import React, { FC, Suspense } from 'react'
 import OtherFields from './utils/OtherFields'
 
 import styles from './articles.module.scss'
 
 import { Article } from 'blog'
 import SearchBox from './utils/SearchBox'
+import LoadingScreen from '../tools/LoadingScreen'
 
 interface Collection {
   collection: Article[]
@@ -13,17 +14,23 @@ interface Collection {
 const Articles: FC<Collection> = ( { collection } ) => {
 
   return (
+    <Suspense fallback={<LoadingScreen />}>
     <section className={styles.articleSection}>
-      <h1>All blog posts</h1>
-      {collection.map(({ id, attributes }: any) => (
-        <div className={styles.contentWrap} key={ id }>
-          <h2 className={styles.title}>{ attributes.title }</h2>
-          <p className={styles.content}>{ attributes.description }</p>
-          <OtherFields time={ attributes.publishedAt } />
-        </div>
-      ))}
       <SearchBox posts={collection} />
+      {collection.map(({ attributes }: Article) => (
+        <>
+          <div key={attributes.slug} className={styles.contentWrap}>
+            <h2 className={styles.title}>{ attributes.title }</h2>
+            <p className={styles.content}>{ attributes.description }</p>
+            <OtherFields key={attributes.publishedAt}
+              time={attributes.publishedAt && ( attributes.publishedAt )}
+              categories={attributes.categories.data && ( attributes.categories )}
+            />
+          </div>
+        </>
+      ))}
     </section>
+    </Suspense>
   )
 }
 
