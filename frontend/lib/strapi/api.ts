@@ -1,4 +1,5 @@
 import qs from "querystring";
+import { SetStateAction } from "react";
 
 /**
  * Get full Strapi URL from path
@@ -59,4 +60,32 @@ export async function fetchAPI(
   }
   const data = await response.json();
   return data;
+}
+
+export function clientSideFetchAPI(
+  path: string, 
+  urlParamsObject = {}, 
+  options = {},
+  setStateForData: SetStateAction<any>,
+  setLoading?: SetStateAction<any>,
+) {
+  // Merge default and user options
+  const mergedOptions = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    ...options,
+  };
+
+  // Build request URL
+  const queryString = qs.stringify(urlParamsObject);
+  const requestUrl = `${getStrapiURL(
+    `/api${path}${queryString ? `?${queryString}` : ""}`
+  )}`;
+
+  // Trigger API call
+  fetch(requestUrl, mergedOptions)
+    .then(response => response.json()
+    .then(data => setStateForData(data))
+  )
 }

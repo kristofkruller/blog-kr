@@ -6,27 +6,29 @@ import styles from './articles.module.scss'
 import { Article } from 'blog'
 import SearchBox from './utils/SearchBox'
 import LoadingScreen from '../tools/LoadingScreen'
+import { SortByName } from './utils/SortBy'
+import Link from 'next/link'
 
 interface Collection {
   collection: Article[]
 }
 
 const Articles: FC<Collection> = ( { collection } ) => {
-
   return (
     <Suspense fallback={<LoadingScreen />}>
-    <section className={styles.articleSection}>
+    <section key="articleSection" className={styles.articleSection}>
       <SearchBox posts={collection} />
-      {collection.map(({ attributes }: Article) => (
+      <SortByName sortable={collection} />
+      {collection.map(({ id, attributes }: Article) => (
         <>
-          <div key={attributes.slug} className={styles.contentWrap}>
+          <Link href={`blog/${id}`} key={attributes.slug} className={styles.contentWrap}>
             <h2 className={styles.title}>{ attributes.title }</h2>
             <p className={styles.content}>{ attributes.description }</p>
             <OtherFields key={attributes.publishedAt}
               time={attributes.publishedAt && ( attributes.publishedAt )}
               categories={attributes.categories.data && ( attributes.categories )}
             />
-          </div>
+          </Link>
         </>
       ))}
     </section>

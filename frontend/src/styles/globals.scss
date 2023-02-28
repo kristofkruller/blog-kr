@@ -23,7 +23,7 @@
   --transition-basic: all 245ms ease-in-out;
 
   --rale:'__Raleway_6a7471', '__Raleway_Fallback_6a7471';
-  --sora:'__Sora_accfd5', '__Sora_Fallback_accfd5';
+  // --sora:'__Sora_accfd5', '__Sora_Fallback_accfd5';
 }
 
 html * {
@@ -80,7 +80,7 @@ h1 {
 h2 {
   text-transform: uppercase;
   text-align: center;
-  font-family: var(--sora);
+  // font-family: var(--sora);
   font-size: 40px;
   font-weight: 900;
   line-height: 49px;
