@@ -39,8 +39,8 @@ export interface DefaultMeta {
   data: {
     id: number,
     attributes: {
-      siteName?: string;
-      hero?: {
+      siteName: string;
+      hero: {
         title: string;
       }
       seo: {
@@ -48,7 +48,7 @@ export interface DefaultMeta {
         metaDescription: string;
       }
       favicon: Img;
-      shareImage?: Img;
+      shareImage: Img;
     }
   };
 }

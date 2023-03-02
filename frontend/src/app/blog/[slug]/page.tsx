@@ -1,57 +1,82 @@
-"use client"
-
-import { clientSideFetchAPI } from 'lib/strapi/api';
-import React, { useEffect, useState } from 'react'
+import { fetchAPI } from 'lib/strapi/api';
+import React from 'react'
 import { Article } from 'blog';
-import LoadingScreen from '@root/components/tools/LoadingScreen';
+import { getStrapiMedia } from 'lib/strapi/media';
+import { Metadata } from 'next';
+import Img from '@root/components/image/img';
+import { createDebuggerStatement } from 'typescript';
+
+// ISR REGEN
 
 const env = process.env.NODE_ENV;
 export const revalidate = env == "development" ? 1 : 600;
 
-interface FrontEndArticles {
-  data: Article[];
-  meta: any;
+// S E O START
+
+const fetchArticles = async () => {
+  const response = await fetchAPI("/articles", {
+    populate: "*"
+  })
+  return response;
 }
 
-const page = ({
+export async function generateMetadata({ params }:any): Promise<Metadata> {
+  
+  const { data } = await fetchArticles();
+  const current: Article = data.filter((article: Article) => article.attributes.slug === params.slug)[0];
+  
+  const articleImg = await getStrapiMedia(current.attributes.image);
+
+  return {
+
+    title: current.attributes.title,
+    description: current.attributes.description,
+    applicationName: "Kruller's blog",
+    creator: 'Kristof Kruller',
+    keywords: 'nexjs, react, blog, porfolio, tech, javascript, webdev, development, frontend, backend, fullstack',
+    robots: "index, follow",
+    category: "portfolio, blog",
+    icons: ["favicon", articleImg],
+    assets: articleImg,
+
+    openGraph: {
+      siteName: "Kruller's blog",
+      title: current.attributes.title,
+      description: current.attributes.description,
+      type: 'website',
+      locale: 'en-HU',
+      images: articleImg,
+    },
+    
+    twitter: {
+      site: "Kruller's blog",
+      title: current.attributes.title,
+      description: current.attributes.description,
+      creator: 'Kristof Kruller',
+      images: articleImg,
+    }
+
+  }
+}
+
+// S E O END
+
+export default async function ArticlePage ({
   params,
   searchParams,
 }: {
   params: { slug: string };
   searchParams?: { [key: string]: string | string[] | undefined };
-}) => {
+}) {
 
-  const [articleState, setArticle] = useState<FrontEndArticles | null>();
-  const [load, setLoad] = useState<boolean>(false);
-
-  useEffect(() => {
-    setLoad(true);
-    clientSideFetchAPI(
-      "/articles", 
-      {populate: "*"},
-      {},
-      setArticle,
-      setLoad
-    );
-  }, []);
+  const { data } = await fetchArticles();
+  const current: Article = data.filter((article: Article) => article.attributes.slug === params.slug)[0];
 
   return (
     <>
-      { load ? (
-        <LoadingScreen />
-      ) : (
-      <>
-        { 
-          articleState && articleState.data
-          .filter((article: Article) => article.attributes.slug === params.slug)
-          .map(({ attributes }: Article) => (
-            <h1 key={attributes.title}>{attributes.title}</h1>
-          ))
-        }
-      </>
-      )}
+      <h1>{current.attributes.title}</h1>
+      <Img image={current.attributes.image}/>
+      <p>{current.attributes.description}</p>
     </>
   )
 }
-
-export default page
