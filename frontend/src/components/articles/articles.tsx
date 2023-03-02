@@ -21,7 +21,7 @@ const Articles: FC<Collection> = ( { collection } ) => {
       <SortByName sortable={collection} />
       {collection.map(({ id, attributes }: Article) => (
         <>
-          <Link href={`blog/${id}`} key={attributes.slug} className={styles.contentWrap}>
+          <Link href={`blog/${attributes.slug}`} key={attributes.slug} className={styles.contentWrap}>
             <h2 className={styles.title}>{ attributes.title }</h2>
             <p className={styles.content}>{ attributes.description }</p>
             <OtherFields key={attributes.publishedAt}

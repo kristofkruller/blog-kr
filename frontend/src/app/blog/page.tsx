@@ -1,6 +1,9 @@
 import Articles from '@root/components/articles/Articles';
 import { fetchAPI } from 'lib/strapi/api';
 
+const env = process.env.NODE_ENV;
+export const revalidate = env == "development" ? 1 : 600;
+
 const fetchAllArticles = async () => {
   const response = await fetchAPI("/articles", {
     populate: "*", sort: ['publishedAt:desc'],

@@ -12,9 +12,10 @@
 .loading {
   width: 8vmax;
   height: 8vmax;
-  border-right: 4px solid var(--pink);
+  border-right: 4px solid var(--krubo);
   border-radius: 100%;
-  animation: spinRight 800ms linear infinite;
+  animation: spinRight 1800ms linear infinite backwards;
+  opacity: .7;
   
   &:before, &:after {
     content: '';
@@ -24,9 +25,9 @@
     position: absolute;
     top: calc(50% - 3vmax);
     left: calc(50% - 3vmax);
-    border-left: 3px solid var(--pink);
+    border-left: 3px solid var(--krubo);
     border-radius: 100%;
-    animation: spinLeft 800ms linear infinite;
+    animation: spinLeft 1800ms linear infinite;
   }
   
   &:after {
@@ -35,7 +36,7 @@
     top: calc(50% - 2vmax);
     left: calc(50% - 2vmax);
     border: 0;
-    border-right: 2px solid var(--pink);
+    border-right: 2px solid var(--krubo);
     animation: none;
   }
 }

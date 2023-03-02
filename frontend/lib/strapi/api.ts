@@ -62,7 +62,7 @@ export async function fetchAPI(
   return data;
 }
 
-export function clientSideFetchAPI(
+export async function clientSideFetchAPI(
   path: string, 
   urlParamsObject = {}, 
   options = {},
@@ -84,8 +84,12 @@ export function clientSideFetchAPI(
   )}`;
 
   // Trigger API call
-  fetch(requestUrl, mergedOptions)
+  await fetch(requestUrl, mergedOptions)
     .then(response => response.json()
     .then(data => setStateForData(data))
   )
+
+  // setLoading && setTimeout(() => {
+  setLoading && setLoading(false);
+  // }, 250); 
 }
