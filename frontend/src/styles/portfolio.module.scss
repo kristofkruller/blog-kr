@@ -1,0 +1,24 @@
+.landing {
+  padding: 5rem 0 2rem;
+
+  & > section {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h1 {
+    gap: 1rem;
+  }
+
+}
+
+.greetSection {
+  composes: flexMidColumn from "./template.module.scss";
+  justify-content: flex-start;
+}
+
+.greet {
+  composes: subTitleScema from "./template.module.scss";
+}

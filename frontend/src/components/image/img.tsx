@@ -8,7 +8,7 @@ interface ImgProps {
 }
 
 const Img: FC<ImgProps> = ({ image }) => {
-  const { alternativeText, width, height } = image.data.attributes;
+  const { alternativeText, width, height } = image.data.attributes && image.data.attributes;
 
   return (
     <Image

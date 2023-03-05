@@ -21,10 +21,10 @@ export default function RootLayout({ children }:{children: React.ReactNode}) {
       <body>
       <GlobalContextProvider>
         <OpenProvider>
-          <main>
+          <>
             <Header />
             {children}
-          </main>
+          </>
         </OpenProvider>
       </GlobalContextProvider>
       </body>

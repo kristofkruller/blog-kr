@@ -1,5 +1,5 @@
 .navBar {
-  height: 60px;
+  height: 3rem;
   width: 100%;
   
   position: fixed;
@@ -11,9 +11,11 @@
   background-image: linear-gradient(
     to bottom,
     transparent, 
-    rgba(255,255,255,.7) 10%, 
-    white, 
-    rgba(255,255,255,.7) 90%, 
+    rgba(255,255,255,.4) 15%, 
+    rgba(255,255,255,.7) 30%, 
+    rgba(255,255,255,.87), 
+    rgba(255,255,255,.7) 70%, 
+    rgba(255,255,255,.4) 85%, 
     transparent
   );
 
@@ -29,7 +31,7 @@
   align-items: center;
 
   &:hover * {
-    transform: scale(1.2) translateY(20px);
+    transform: scale(1.2) translateY(2rem);
     filter: blur(3px);
     color: var(--pink);
   }
@@ -37,15 +39,15 @@
 
 .navLink {
   text-transform: uppercase;
-  padding: 2.5px 50px;
+  padding: 1.25rem 2.5rem;
   cursor: pointer;
-  font-size: 28px;
+  font-size: 2rem;
   // font-family: var(--sora);
 
   &:hover {
     background-color: var(--pink);
     color: white;
-    transform: scale(1.5) translateY(20px);
+    transform: scale(1.5) translateY(2rem);
     filter: blur(0);
   }
 }

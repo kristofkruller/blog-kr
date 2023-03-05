@@ -8,11 +8,11 @@ const Header = () => {
   return (
     <header className={styles.navBar}>
       <section key="navWrap" className={styles.navWrap}>
-        <Link key="services" className={styles.navLink} href="#services">services</Link>
-        <Link key="portfolio" className={styles.navLink} href="#portfolio">portfolio</Link>
-        <Link key="contact" className={styles.navLink} href="#contact">contact</Link>
+        <a key="services" className={styles.navLink} href="/#">home</a>
+        <a key="portfolio" className={styles.navLink} href="/#portfolio">portfolio</a>
+        <a key="contact" className={styles.navLink} href="/#contact">contact</a>
+        <a key="about" className={styles.navLink} href="/#about">about</a>
         <Link key="blog" className={styles.navLink} href="/blog">blog</Link>
-        <Link key="about" className={styles.navLink} href="#about">about</Link>
       </section>
     </header>
   )

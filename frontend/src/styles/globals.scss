@@ -25,12 +25,15 @@
   --rale:'__Raleway_6a7471', '__Raleway_Fallback_6a7471';
   // --sora:'__Sora_accfd5', '__Sora_Fallback_accfd5';
 }
-
+html {
+  font-size: 20px;
+}
 html * {
   box-sizing: border-box;
   padding: 0;  
   margin: 0;
   cursor: default;
+  transition: var(--transition-basic);
 }
 
 html,
@@ -68,22 +71,21 @@ h1 {
 
   text-transform: uppercase;
   text-align: center;
-  font-size: 5em;
+  font-size: 4rem;
   font-weight: 500;
-  letter-spacing: .3em;
+  letter-spacing: .2rem;
   color: var(--dark);
 
-  min-height: 160px;
-  padding: 100px 0 40px;
+  min-height: 8rem;
 }
 
 h2 {
   text-transform: uppercase;
   text-align: center;
-  // font-family: var(--sora);
-  font-size: 40px;
+  font-size: 2rem;
   font-weight: 900;
-  line-height: 49px;
-  letter-spacing: 0.1em;
+  line-height: 2.5rem;
+  letter-spacing: .1rem;
   color: var(--krubo);
 }
+

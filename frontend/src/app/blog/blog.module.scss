@@ -1,0 +1,8 @@
+.landing {
+  composes: landing from "../../styles/portfolio.module.scss";
+
+  & > section {
+    justify-content: flex-start;
+  }
+
+}

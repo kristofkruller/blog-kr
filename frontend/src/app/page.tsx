@@ -2,9 +2,11 @@ import { fetchAPI } from "lib/strapi/api"
 import { Metadata } from "next";
 import { DefaultMeta } from "blog";
 import { getStrapiMedia } from "lib/strapi/media";
+import { MetaTree } from "lib/seo";
+
+import styles from "../styles/portfolio.module.scss"
 
 // S E O START
-
 const fetchSiteSeo = async () => {
   const response = await fetchAPI("/global", {
     populate: "*"
@@ -13,48 +15,35 @@ const fetchSiteSeo = async () => {
   return response;
 }
 
-export async function generateMetadata({ params }:any): Promise<Metadata> {
-  const { data }: DefaultMeta = await fetchSiteSeo();
-  const faviconUrl = await getStrapiMedia(data.attributes.favicon);
-  const shareImgUrl = await getStrapiMedia(data.attributes.shareImage);
+export async function generateMetadata({ params }: { params:{slug: string} } ): Promise<Metadata> {
+  const meta : DefaultMeta = await fetchSiteSeo();
+  const faviconUrl = await getStrapiMedia(meta.data.attributes.favicon);
+  const shareImgUrl = await getStrapiMedia(meta.data.attributes.shareImage);
 
-  return {
-
-    title: data.attributes.siteName,
-    description: data.attributes.seo.metaDescription,
-    applicationName: data.attributes.seo.metaTitle,
-    creator: 'Kristof Kruller',
-    keywords: 'nexjs, react, blog, porfolio, tech, javascript, webdev, development, frontend, backend, fullstack',
-    robots: "index, follow",
-    category: "portfolio, blog",
-    icons: ["favicon", faviconUrl],
-    assets: shareImgUrl,
-
-    openGraph: {
-      siteName: data.attributes.siteName,
-      title: data.attributes.seo.metaTitle,
-      description: data.attributes.seo.metaDescription,
-      type: 'website',
-      locale: 'en-HU',
-      images: shareImgUrl,
-    },
-    
-    twitter: {
-      site: data.attributes.siteName,
-      title: data.attributes.seo.metaTitle,
-      description: data.attributes.seo.metaDescription,
-      creator: 'Kristof Kruller',
-      images: shareImgUrl
-    }
-
-  }
+  return MetaTree(meta, faviconUrl, shareImgUrl);
 }
-
 // S E O END
 
 export default function Home() {
 
   return (
-      <h1>Portfolio and blog</h1>
+    <main className={styles.landing}>
+      <section key="home" id="home" className={styles.greetSection}>
+        <div>
+          <h3 className={styles.greet}>Hi I am Kristof and this is my</h3>
+          <h1><span>Portfolio</span>and<span>blog</span></h1>
+        </div>
+      </section>
+      <section key="portfolio" id="portfolio">
+        <h1>Portfolio</h1>
+      </section>
+      <section key="contact" id="contact">
+        <h1>Contact</h1>
+      </section>
+      <section key="about" id="about">
+        <h1>About</h1>
+      </section>
+    </main>
+
   )
 }
