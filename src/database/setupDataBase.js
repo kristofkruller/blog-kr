@@ -14,11 +14,6 @@ async function setup() {
     migrationsPath: "./database",
     force: process.env.NODE_ENV === 'development' ? 'last' : false,
   });
-
-  const category = await db.all("SELECT * FROM category");
-  const post = await db.all("SELECT * FROM post");
-  console.log("categories",JSON.stringify(category, null, 2));
-  console.log("posts",JSON.stringify(post, null, 2));
 }
 
 setup();
