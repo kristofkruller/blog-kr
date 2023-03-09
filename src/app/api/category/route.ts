@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { openDB } from "../../../helpers/dbProcess";
-const sqlite3 = require("sqlite3");
 
 export async function GET(request: Request) {
   const db = await openDB();
@@ -21,7 +20,7 @@ export async function POST(request: Request) {
     await createCat.run(category_name);
     await createCat.finalize();
   } catch (error) {
-    console.error("POST ERROR:", error);
+    console.error("CREATE CATEGORY ERROR:", error);
   }
 }
 export async function PUT(request: Request) {
@@ -37,7 +36,7 @@ export async function PUT(request: Request) {
     await updateCat.run(category_name, cat_id);
     await updateCat.finalize();
   } catch (error) {
-    console.error("PUT ERROR:", error);
+    console.error("UPDATE CATEGORY ERROR:", error);
   }
 }
 export async function DELETE(request: Request) {
@@ -53,6 +52,6 @@ export async function DELETE(request: Request) {
     await delCat.run(cat_id);
     await delCat.finalize();
   } catch (error) {
-    console.error("DELETE ERROR:", error);
+    console.error("DELETE CATEGORY ERROR:", error);
   }
 }

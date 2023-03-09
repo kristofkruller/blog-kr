@@ -1,12 +1,4 @@
-const sqlite3 = require("sqlite3");
-const sqlite = require("sqlite");
-
-async function openDB() {
-  return sqlite.open({
-    filename:"./blog.db",
-    driver: sqlite3.Database,
-  })
-}
+import { openDB } from "@root/helpers/dbProcess";
 
 async function setup() {
   const db = await openDB();
