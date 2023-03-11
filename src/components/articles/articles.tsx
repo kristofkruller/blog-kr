@@ -19,14 +19,14 @@ const Articles: FC<Collection> = ( { collection } ) => {
     <section key="articleSection" className={styles.articleSection}>
       <SearchBox posts={collection} />
       <SortByName sortable={collection} />
-      {collection.map(({ id, attributes }: Article) => (
+      {collection.map(({ title, slug, description, created_at, category_name }: Article) => (
         <>
-          <Link href={`blog/${attributes.slug}`} key={attributes.slug} className={styles.contentWrap}>
-            <h2 className={styles.title}>{ attributes.title }</h2>
-            <p className={styles.content}>{ attributes.description }</p>
-            <OtherFields key={attributes.publishedAt}
-              time={attributes.publishedAt && ( attributes.publishedAt )}
-              categories={attributes.categories.data && ( attributes.categories )}
+          <Link href={`blog/${slug}`} key={slug} className={styles.contentWrap}>
+            <h2 className={styles.title}>{ title }</h2>
+            <p className={styles.content}>{ description }</p>
+            <OtherFields key={created_at}
+              time={created_at}
+              categories={category_name}
             />
           </Link>
         </>

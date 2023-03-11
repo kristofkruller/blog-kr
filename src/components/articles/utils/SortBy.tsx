@@ -14,7 +14,7 @@ export const SortByName: FC<DataProps> = ({ sortable }) => {
     if (sortable.length < 1 || !sortable) return; 
     const extractValOfLetters = (article: Article): number => {
       let sum: number = 0;
-      const subString = article.attributes.slug.split("-").join("").substring(0,7);
+      const subString = article.slug.split("-").join("").substring(0,7);
       for (let idx = 0; idx < subString.length; idx++) {
         sum += subString.charCodeAt(idx);
       }

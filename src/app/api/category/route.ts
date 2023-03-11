@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { openDB } from "../../../helpers/dbProcess";
 
-export async function GET(request: Request) {
+export async function GET() {
   const db = await openDB();
   const allCats = await db.all("SELECT * FROM category");
   

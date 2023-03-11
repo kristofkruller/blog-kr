@@ -7,7 +7,8 @@ import Moment from 'react-moment'
 
 interface TimeProp {
   time: string;
-  categories: Category;
+  // categories: Category[];
+  categories: string;
 }
 
 const OtherFields:FC<TimeProp> = ( { time, categories } ) => {
@@ -17,9 +18,11 @@ const OtherFields:FC<TimeProp> = ( { time, categories } ) => {
       { time }
       </Moment>
       <span key={time}>
-        {categories.data.map(cat => (
-          <p key={cat.attributes.slug}>{`#${cat.attributes.name}`}</p>
-        ))}
+        <p key={categories}>{`#${categories}`}</p>
+
+        {/* {categories.map(({cat_id,category_name}) => (
+          <p key={cat_id}>{`#${category_name}`}</p>
+        ))} */}
       </span>
     </>
   )

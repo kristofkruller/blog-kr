@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { openDB, slugify } from "../../../../helpers/dbProcess";
 
-export async function GET(request: Request, { params } : { params: {slug: string} }) {
+export async function GET({ params } : { params: {slug: string} }) {
   const db = await openDB();
   const exactPost = await db.get("SELECT * FROM post WHERE slug = ?", [
     params.slug,
@@ -37,11 +37,8 @@ export async function PUT(request: Request, { params } : { params: {slug: string
     console.error("UPDATE POST ERROR:", error);
   }
 }
-export async function DELETE(request: Request, { params } : { params: {slug: string} }) {
+export async function DELETE({ params } : { params: {slug: string} }) {
   const db = await openDB();
-
-  const requestBody = await request.json();
-  const { post_id } = requestBody;
 
   const deletePost = await db.prepare(
     "DELETE FROM post WHERE post_id = ?", [

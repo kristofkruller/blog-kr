@@ -15,9 +15,9 @@ const SearchBox: FC<DataProp> = ( { posts } ) => {
   
   const filteredVal = posts.filter(post => {
     return (
-      post.attributes.title.toLowerCase().includes(input.toLowerCase()) 
-      || post.attributes.description.toLowerCase().includes(input.toLowerCase()) 
-      || post.attributes.author.data.attributes.name.toLowerCase().includes(input.toLowerCase())
+      post.title.toLowerCase().includes(input.toLowerCase()) 
+      || post.description.toLowerCase().includes(input.toLowerCase()) 
+      || post.author.toLowerCase().includes(input.toLowerCase())
     );
   });
   
@@ -30,7 +30,7 @@ const SearchBox: FC<DataProp> = ( { posts } ) => {
         onChange={handleChange}
       />
     {input.length > 0 ?
-      <div key="filteredVal">{ filteredVal.map(val => <p key={val.id}>{val.attributes.title}</p>) }</div>  
+      <div key="filteredVal">{ filteredVal.map(val => <p key={val.post_id}>{val.title}</p>) }</div>  
     : <p key="hint">you can search by category, title, description or author</p> 
     }
     </>

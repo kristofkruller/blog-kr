@@ -1,22 +1,8 @@
-import { Metadata } from "next";
-import { DefaultMeta } from "blog";
-import { MetaTree } from "../components/seo";
-
 import styles from "../styles/portfolio.module.scss"
+import { StaticHomeSeo } from "@root/components/seo";
 
 // S E O START
-const fetchSiteSeo = async () => {
-  const response = await fetch("");
-  return response;
-}
-
-export async function generateMetadata({ params }: { params:{slug: string} } ): Promise<Metadata> {
-  // const meta : DefaultMeta = await fetchSiteSeo();
-  // const faviconUrl = await getStrapiMedia(meta.data.attributes.favicon);
-  // const shareImgUrl = await getStrapiMedia(meta.data.attributes.shareImage);
-
-  // return MetaTree(meta, faviconUrl, shareImgUrl);
-}
+export const metadata = StaticHomeSeo();
 // S E O END
 
 export default function Home() {

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { openDB, slugify } from "../../../helpers/dbProcess";
 
-export async function GET(request: Request) {
+export async function GET() {
   const db = await openDB();
   const allPosts = await db.all("SELECT * FROM post");
   
