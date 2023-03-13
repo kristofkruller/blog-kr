@@ -4,7 +4,7 @@ import { GlobalContextProvider } from "@root/context/GlobalContext";
 import { OpenProvider } from "@root/context/OpenContext";
 import '../styles/globals.scss'
 
-import { Sora, Raleway } from "@next/font/google"
+import { Sora, Raleway } from "next/font/google"
 
 const sora = Sora({ subsets: ['latin'] });
 const raleway = Raleway({ subsets: ['latin'] });
