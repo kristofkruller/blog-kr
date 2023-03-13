@@ -3,7 +3,6 @@ import { StaticHomeSeo } from "@root/components/seo";
 
 // S E O START
 export const metadata = StaticHomeSeo();
-// S E O END
 
 export default function Home() {
 
