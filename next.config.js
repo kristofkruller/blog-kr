@@ -8,7 +8,7 @@ const nextConfig = {
   },
   images: {
     loader: "default",
-    domains: ["localhost"],
+    domains: ["localhost", "images.unsplash.com"],
   }
 }
 

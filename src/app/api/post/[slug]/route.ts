@@ -1,16 +1,16 @@
+import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import { NextResponse } from "next/server";
 import { openDB, slugify } from "../../../../helpers/dbProcess";
 
-export async function GET({ params } : { params: {slug: string} }) {
+export async function GET(_: Request, { params }: Params) {
   const db = await openDB();
-  const exactPost = await db.get("SELECT * FROM post WHERE slug = ?", [
+  const exactPost = await db.all("SELECT * FROM post WHERE slug = ?", [
     params.slug,
   ]);
-  
   return NextResponse.json(exactPost);
 }
 
-export async function PUT(request: Request, { params } : { params: {slug: string} }) {
+export async function PUT(request: Request, params: Params) {
   const db = await openDB();
 
   const requestBody = await request.json();
@@ -37,7 +37,7 @@ export async function PUT(request: Request, { params } : { params: {slug: string
     console.error("UPDATE POST ERROR:", error);
   }
 }
-export async function DELETE({ params } : { params: {slug: string} }) {
+export async function DELETE(params: Params) {
   const db = await openDB();
 
   const deletePost = await db.prepare(
